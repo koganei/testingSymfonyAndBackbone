@@ -38,9 +38,16 @@ $(function() {
         initialize: function(options) {
             this.name = options.name || this.name;
 
-            this.template = twig({
-                data: options.tpl
-            });
+            if(options.url) {
+                this.template = twig({
+                    href: options.url,
+                    async: false
+                });
+            } else {
+                this.template = twig({
+                    data: options.tpl
+                });
+            }
 
             this.extraTwigVars = options.extraTwigVars;
 

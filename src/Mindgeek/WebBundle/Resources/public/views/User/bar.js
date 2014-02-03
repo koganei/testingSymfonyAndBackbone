@@ -50,6 +50,12 @@ $(function() {
         template: twig({data: ''}),
 
         /**
+         * If populated, will be pulled instead of using the template string
+         * @type {String}
+         */
+        url: '',
+
+        /**
          * We initialize the template, this exact function
          * could be superclassed.
          * @param  {Object} options View overrides
