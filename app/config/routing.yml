@@ -1,0 +1,4 @@
+mindgeek_web:
+    resource: "@MindgeekWebBundle/Resources/config/routing.yml"
+    prefix:   /
+

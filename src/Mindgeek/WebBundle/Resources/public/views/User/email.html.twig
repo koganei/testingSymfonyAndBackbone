@@ -1,0 +1,10 @@
+<div class="emails">
+    <button class="check-email">check for new email</button>
+    {% for email in emails %}
+        <div class="email">
+            <div class="from">From: {{ email.from }}</div>
+            <div class="subject">Subject: {{ email.subject }}</div>
+            <div class="description">Description: {{ email.description }}</div>
+        </div>
+    {% endfor %}
+</div>

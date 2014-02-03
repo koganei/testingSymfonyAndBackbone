@@ -1,0 +1,57 @@
+<script src="{{ asset('bundles/mindgeekweb/js/twig.min.js') }}"></script>
+
+<h1>Static:</h1>
+<div id="userbar-static">
+    {% include "User/bar.html.twig" %}
+</div>
+
+<h1>Dynamic:</h1>
+
+<div id="userbar"></div>
+<script type="text/html" src="{{ asset('bundles/mindgeekweb/views/User/bar.html.twig') }}" id="userbar-template"></script>
+<script>
+App = {
+    user: {{ user|json_encode|raw }}
+};
+</script>
+<input id="name" placeholder="Name">
+<input id="description" placeholder="Description">
+<button class="changeinfo">Change Info</button>
+
+
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script>
+window.getTemplate = function(selector) {
+    var tplSrc = $(selector).attr('src');
+    
+
+    $.get(tplSrc, useTemplate);
+
+};
+
+window.useTemplate = function(tpl) {
+    window.template = twig({
+        id: "list", // id is optional, but useful for referencing the template later
+        data: tpl
+    });
+
+    makeTemplate();
+};
+
+window.makeTemplate = function() {
+    var output = template.render({'user' : App.user });
+    $('#userbar').html(output);
+};
+
+$('.changeinfo').click(function() {
+    App.user = {
+        'name' : $('#name').val(),
+        'description' : $('#description').val()
+    };
+
+    makeTemplate();
+
+});
+
+getTemplate('#userbar-template');
+</script>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .email {
+            border: 1px solid #333;
+            padding: 10px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        .email.selected {
+            border-width: 2px;
+        }
+    </style>
+</head>
+<body>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src="{{ asset('bundles/mindgeekweb/js/twig.min.js') }}"></script>
+<script src="{{ asset('bundles/mindgeekweb/js/underscore-min.js') }}"></script>
+<script src="{{ asset('bundles/mindgeekweb/js/backbone-min.js') }}"></script>
+<script src="{{ asset('bundles/mindgeekweb/views/baseView.js') }}"></script>
+<script src="{{ asset('bundles/mindgeekweb/views/User/bar.js') }}"></script>
+<script src="{{ asset('bundles/mindgeekweb/views/User/email.js') }}"></script>
+
+<!-- BASIC BACKBONE VIEW -->
+<h1>Basic Backbone View:</h1>
+
+<div id="userbar"></div>
+<script type="text/html" src="{{ asset('bundles/mindgeekweb/views/User/bar.html.twig') }}" id="userbar-template"></script>
+<script>
+App = {
+    user: {{ user|json_encode|raw }}
+};
+</script>
+
+<!-- BACKBONE VIEW EXTENDED FROM BASE VIEW-->
+<h1>Backbone View extended from a base view:</h1>
+
+<div id="emails"></div>
+<script type="text/html" src="{{ asset('bundles/mindgeekweb/views/User/email.html.twig') }}" id="email-template"></script>
+<script>
+App.emails = [{
+    from: 'first@example.com',
+    subject: 'my example subject',
+    description: 'This is a description'
+},{
+    from: 'second@example.com',
+    subject: 'my second example subject',
+    description: 'This is a second description'
+},{
+    from: 'third@example.com',
+    subject: 'oh my! example',
+    description: 'These are description texts'
+}];
+</script>
+
+<!-- BACKBONE SETUP -->
+<script>
+$(function() {
+    function loadTemplate(el, templateEl, viewName) {
+        $.get($(templateEl).attr('src'), function(data) {
+            var myNewView = new Mindgeek[viewName]({
+                el: el,
+                tpl: data,
+                extraTwigVars: { 'emails': App.emails }
+            });
+
+            myNewView.render();
+
+            return myNewView;
+        });
+    };
+
+    $.get($('#userbar-template').attr('src'), function(data) {
+        window.myBarView = new Mindgeek.BarView({
+            el: '#userbar',
+            tpl: data
+        });
+
+        myBarView.render();
+    });
+
+    myEmailView = loadTemplate('#emails', '#email-template', "EmailView");
+
+
+});
+
+</script>
+</body>
+</html>

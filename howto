@@ -1,0 +1,9 @@
+Symfony2:
+- Added Twig Extension for URL to be loaded
+    - made a views folder in bundle's public folder
+    - made Twig\LoaderExtension.php
+    - registered extension in config.yml
+    - added script tag with a twig file as src
+
+JS:
+- 

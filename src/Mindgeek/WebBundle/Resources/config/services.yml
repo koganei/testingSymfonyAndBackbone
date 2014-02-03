@@ -1,0 +1,7 @@
+parameters:
+#    mindgeek_web.example.class: Mindgeek\WebBundle\Example
+
+services:
+#    mindgeek_web.example:
+#        class: %mindgeek_web.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -1,0 +1,11 @@
+mindgeek_web_homepage:
+    pattern:  /
+    defaults: { _controller: MindgeekWebBundle:Default:index }
+
+mindgeek_web_twigtest:
+    pattern:  /twigtest
+    defaults: { _controller: MindgeekWebBundle:Default:twigTest }
+
+mindgeek_web_backbonetest:
+    pattern:  /backbonetest
+    defaults: { _controller: MindgeekWebBundle:Default:backboneTest }
