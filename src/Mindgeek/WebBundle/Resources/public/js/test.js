@@ -1,7 +1,7 @@
 /**
  * Example QUnit Test for a Backbone View
  *
- * let's test baseview!
+ * let's test baseView!
  */
 
 module( "Base View sanity check", {
@@ -10,23 +10,23 @@ module( "Base View sanity check", {
         $('body').append(this.$viewEl);
 
 
-        this.baseView = window.baseView = window.baseView || new Mindgeek.BaseView({
+        this.baseView = new Mindgeek.BaseView({
+            name: "test baseView",
             el: this.$viewEl,
             tpl: '{{name}}',
             extraTwigVars: {
                 'name': 'testName'
             }
         });
-
     },
 
     teardown: function() {
         this.$viewEl.remove();
+
     }
 });
 test("test basic class properties", function() {
     // name
-    this.baseView.name = "test baseView";
     equal(true, this.baseView.name == 'test baseView');
 });
 test("test template", function() {

@@ -39,7 +39,6 @@ $(function() {
             this.name = options.name || this.name;
 
             this.template = twig({
-                id: this.name,
                 data: options.tpl
             });
 
