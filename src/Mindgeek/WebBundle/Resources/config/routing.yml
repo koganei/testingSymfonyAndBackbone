@@ -9,3 +9,7 @@ mindgeek_web_twigtest:
 mindgeek_web_backbonetest:
     pattern:  /backbonetest
     defaults: { _controller: MindgeekWebBundle:Default:backboneTest }
+
+mindgeek_web_qunittest:
+    pattern:  /qunittest
+    defaults: { _controller: MindgeekWebBundle:Default:QUnitTest }

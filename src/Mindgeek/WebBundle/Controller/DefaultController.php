@@ -35,4 +35,14 @@ class DefaultController extends Controller
             )
         ));
     }
+
+    public function QUnitTestAction()
+    {
+        return $this->render('MindgeekWebBundle:Default:qunittest.html.twig', array(
+            'user' => array(
+                'name' => "user",
+                'description' => "This is a description"
+            )
+        ));
+    }
 }

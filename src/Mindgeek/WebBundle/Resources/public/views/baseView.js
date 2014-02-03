@@ -54,6 +54,7 @@ $(function() {
         render: function() {
             var output = this.template.render(this.extraTwigVars);
             this.$el.html(output);
+            return output;
         }
     });
 });
